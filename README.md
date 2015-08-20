@@ -39,6 +39,7 @@ $ bolt clean-dist
   "clean-dist": "echo 'I love electricity!'"
   ...
 }
+```
 
 Now when you run `bolt clean-dist`, rather than it running `rimraf dist`, it will echo "I love electricity!".
 
