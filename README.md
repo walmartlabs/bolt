@@ -20,6 +20,28 @@ through `bolt`.
 
 Once you've followed the steps above, you should be able to not worry about using it. `bolt` does the work for you.
 
+## Unique Configuration
+
+So you don't want to the `bolt` command out of the box? No problem!
+
+You can override a command in _your_ `package.json` and run `bolt <cmd>` and `bolt` will opt for your script over the script it provides.
+
+For example, say you run:
+
+```
+$ bolt clean-dist
+```
+
+`bolt` will run `rimraf` on your `dist` directory. If you wanted it to do something else such as echo "I love electricity!", you can put the following script in your `scripts` object:
+
+```
+"scripts": {
+  "clean-dist": "echo 'I love electricity!'"
+  ...
+}
+
+Now when you run `bolt clean-dist`, rather than it running `rimraf dist`, it will echo "I love electricity!".
+
 ## Why?
 
 Going through and modifying `*.config*` files in _every_ react component library you have (which correlates 1:1 to a git repository) is a huge pain in the butt, it's a lot of copy/pasta and no one should 1) have to do that and 2) have to endure the possible degradation over time of human copy/pasta.
