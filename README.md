@@ -1,14 +1,18 @@
 # bolt
 
-> An opinionated meta config runner
+> An opinionated meta config runner for react components, doing the heavy lifting so you don't have to.
+
+Provides CLI access to things such as:
 
 - `webpack`
 - `eslint`
 - `karma`
 
+through `bolt`.
+
 ## Install
 
-1. within an electrode package, `npm install @walmart/bolt` [still proposed]
+1. within an electrode package, `npm install bolt` [still proposed]
 1. in your `package.json`, replace existing scripts with `bolt <task>` where the task is the name of the task being replaced. For instance: `"cov-frontend": "istanbul check-coverage 'coverage/client/*/coverage.json'"` would be replaced with `"cov-frontend": "bolt cov-frontend"`.
 1. Enjoy seamless integration with pre-existing configs for your opininated `electrode` component!
 
