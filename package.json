@@ -4,7 +4,10 @@
   "description": "Opinionated meta config runner for react components",
   "scripts": {
     "testBolt": "echo 'bolt is working!'",
-    "lint": "eslint --color=true --ext=.js,.jsx --config node_modules/@walmart/wm_bolt/config/eslint/.eslintrc-base src",
+    "lint-react-demo": "eslint --ext .js,.jsx -c node_modules/@walmart/wm_bolt/config/eslint/.eslintrc-react-demo demo/*.jsx --color",
+    "lint-react-src": "eslint --ext .js,.jsx -c node_modules/@walmart/wm_bolt/config/eslint/.eslintrc-react src --color",
+    "lint-react-test": "eslint --ext .js,.jsx -c node_modules/@walmart/wm_bolt/config/eslint/.eslintrc-react-test test/client --color",
+    "lint": "bolt lint-react-demo && bolt lint-react-src && bolt lint-react-test",
     "clean-dist": "rimraf dist",
     "build-dist-min": "webpack --config node_modules/@walmart/wm_bolt/config/webpack/webpack.config.js --colors",
     "build-dist-dev": "webpack --config node_modules/@walmart/wm_bolt/config/webpack/webpack.config.dev.js --colors",
@@ -28,6 +31,7 @@
   "dependencies": {
     "babel": "^5.8.21",
     "babel-core": "^5.8.22",
+    "babel-eslint": "^4.0.10",
     "babel-loader": "^5.3.2",
     "chai": "^3.2.0",
     "css-loader": "^0.16.0",
