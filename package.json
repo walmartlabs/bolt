@@ -26,7 +26,9 @@
     "check": "bolt lint && bolt test",
     "check-ci": "bolt lint && bolt test-ci",
     "check-cov": "bolt lint && bolt test-cov",
-    "check-dev": "bolt lint && bolt test-dev"
+    "check-dev": "bolt lint && bolt test-dev",
+    "bolt-test": "istanbul cover _mocha -- -R spec test/spec/*.js",
+    "bolt-lint": "eslint -c config/eslint/.eslintrc-bolt bin lib"
   },
   "bin": {
     "bolt": "./bin/bolt.js"
@@ -54,6 +56,7 @@
     "eslint-plugin-react": "^3.2.3",
     "file-loader": "^0.8.4",
     "isparta-loader": "^0.2.0",
+    "istanbul": "^0.3.18",
     "karma": "^0.13.9",
     "karma-chrome-launcher": "^0.2.0",
     "karma-coverage": "^0.4.2",
@@ -80,5 +83,8 @@
     "url-loader": "^0.5.6",
     "webpack": "^1.11.0",
     "webpack-dev-server": "^1.10.1"
+  },
+  "devDependencies": {
+    "mocha": "^2.2.5"
   }
 }

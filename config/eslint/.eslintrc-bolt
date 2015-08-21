@@ -1,0 +1,7 @@
+---
+extends:
+  - "./.eslintrc-node"
+
+rules:
+  "max-statements": 0
+  "no-process-exit": 0
