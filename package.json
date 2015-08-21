@@ -4,6 +4,7 @@
   "description": "Opinionated meta config runner for react components",
   "scripts": {
     "testBolt": "echo 'bolt is working!'",
+    "lint": "eslint --color=true --ext=.js,.jsx --config node_modules/@walmart/wm_bolt/config/eslint/.eslintrc-base src",
     "clean-dist": "rimraf dist",
     "build-dist-min": "webpack --config node_modules/@walmart/wm_bolt/config/webpack/webpack.config.js --colors",
     "build-dist-dev": "webpack --config node_modules/@walmart/wm_bolt/config/webpack/webpack.config.dev.js --colors",
