@@ -12,7 +12,12 @@ through `bolt`.
 
 ## Install
 
-1. within an electrode package, `npm install bolt` [still proposed]
+within an electrode package, run:
+
+```sh
+$ npm install electrode-bolt
+```
+
 1. in your `package.json`, replace existing scripts with `bolt <task>` where the task is the name of the task being replaced. For instance: `"cov-frontend": "istanbul check-coverage 'coverage/client/*/coverage.json'"` would be replaced with `"cov-frontend": "bolt cov-frontend"`.
 1. Enjoy seamless integration with pre-existing configs for your opininated `electrode` component!
 
