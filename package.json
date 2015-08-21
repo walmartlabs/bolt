@@ -19,6 +19,7 @@
     "server-dev": "webpack-dev-server --config node_modules/electrode-bolt/config/webpack/webpack.config.demo.dev.js --colors",
     "server-hot": "webpack-dev-server --config node_modules/electrode-bolt/config/webpack/webpack.config.demo.hot.js --colors",
     "server-test": "webpack-dev-server --config node_modules/electrode-bolt/config/webpack/webpack.config.test.js --colors",
+    "cov-frontend": "istanbul check-coverage 'coverage/client/*/coverage.json' --config=node_modules/electrode-bolt/config/istanbul/.istanbul.yml",
     "test-frontend": "karma start node_modules/electrode-bolt/config/karma/karma.conf.js --colors",
     "test-frontend-cov": "karma start node_modules/electrode-bolt/config/karma/karma.conf.coverage.js --colors",
     "test-frontend-ci": "karma start --browsers PhantomJS,Firefox node_modules/electrode-bolt/config/karma/karma.conf.coverage.js --colors",
