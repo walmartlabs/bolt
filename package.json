@@ -1,6 +1,6 @@
 {
   "name": "electrode-bolt",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "Opinionated meta config runner for react components",
   "scripts": {
     "testBolt": "echo 'bolt is working!'",
