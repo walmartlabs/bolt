@@ -5,6 +5,9 @@ extends:
 globals:
   document: false
   expect: false
-  it: false
+  it: false,
+  sinon: false
 rules:
   "no-unused-expressions": 0
+  "max-len": [2, 100, 2, {ignorePattern: "^\\s*(?:it|describe)\\(.*"}]
+  "max-statements": 0
