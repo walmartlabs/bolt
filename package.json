@@ -20,7 +20,7 @@
     
     "test": "bolt test-frontend",
     "test-ci": "bolt test-frontend-ci",
-    "test-cov": "bolt test-frontend-cov",
+    "test-cov": "bolt test-frontend-cov"
     
   },
   "bin": {
