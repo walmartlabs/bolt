@@ -57,6 +57,8 @@ Maybe one day it won't be opinionated. But this day? Not this day.
 |-- my_project
 |   |-- package.json
 |   |-- demo
+|   |   |-- index.html
+|   |   |-- demo.jsx
 |   |-- dist
 |   |-- src
 |   |   |-- components
