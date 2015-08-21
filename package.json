@@ -76,6 +76,7 @@
     "phantomjs": "^1.9.18",
     "react": "^0.13.3",
     "react-hot-loader": "^1.2.8",
+    "react-tools": "^0.13.2",
     "rimraf": "^2.4.0",
     "sinon": "^1.15.4",
     "sinon-chai": "^2.8.0",

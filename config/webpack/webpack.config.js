@@ -47,6 +47,6 @@ module.exports = {
     extensions: ["", ".js", ".jsx"]
   },
   resolveLoader: {
-      root: [boltNodeModules]
+      root: [boltNodeModules, process.cwd()]
   }
 };
