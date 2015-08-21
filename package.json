@@ -1,19 +1,20 @@
 {
-  "name": "react-bolt",
+  "name": "electrode-bolt",
   "version": "0.0.2",
   "description": "Opinionated meta config runner for react components",
   "scripts": {
     "testBolt": "echo 'bolt is working!'",
-    "lint-react-demo": "eslint --ext .js,.jsx -c node_modules/@walmart/wm_bolt/config/eslint/.eslintrc-react-demo demo/*.jsx --color",
-    "lint-react-src": "eslint --ext .js,.jsx -c node_modules/@walmart/wm_bolt/config/eslint/.eslintrc-react src --color",
-    "lint-react-test": "eslint --ext .js,.jsx -c node_modules/@walmart/wm_bolt/config/eslint/.eslintrc-react-test test/client --color",
+    "lint-react-demo": "eslint --ext .js,.jsx -c node_modules/electrode-bolt/config/eslint/.eslintrc-react-demo demo/*.jsx --color",
+    "lint-react-src": "eslint --ext .js,.jsx -c node_modules/electrode-bolt/config/eslint/.eslintrc-react src --color",
+    "lint-react-test": "eslint --ext .js,.jsx -c node_modules/electrode-bolt/config/eslint/.eslintrc-react-test test/client --color",
     "lint": "bolt lint-react-demo && bolt lint-react-src && bolt lint-react-test",
     "clean-dist": "rimraf dist",
-    "build-dist-min": "webpack --config node_modules/@walmart/wm_bolt/config/webpack/webpack.config.js --colors",
-    "build-dist-dev": "webpack --config node_modules/@walmart/wm_bolt/config/webpack/webpack.config.dev.js --colors",
+    "build-dist-min": "webpack --config node_modules/electrode-bolt/config/webpack/webpack.config.js --colors",
+    "build-dist-dev": "webpack --config node_modules/electrode-bolt/config/webpack/webpack.config.dev.js --colors",
     "build-dist": "bolt clean-dist && bolt build-dist-min && bolt build-dist-dev",
-    "server-dev": "webpack-dev-server --config node_modules/@walmart/wm_bolt/config/webpack/webpack.config.demo.dev.js --colors",
-    "server-hot": "webpack-dev-server --config node_modules/@walmart/wm_bolt/config/webpack/webpack.config.demo.hot.js --colors"
+    "server-dev": "webpack-dev-server --config node_modules/electrode-bolt/config/webpack/webpack.config.demo.dev.js --colors",
+    "server-hot": "webpack-dev-server --config node_modules/electrode-bolt/config/webpack/webpack.config.demo.hot.js --colors",
+    "test-frontend": "karma start node_modules/electrode-bolt/config/karma/karma.conf.js --colors"
   },
   "bin": {
     "bolt": "./bin/bolt.js"
