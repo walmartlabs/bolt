@@ -1,49 +1,23 @@
 var path = require("path");
 
+var webpackCfg = require("../webpack/webpack.config.test");
+
 module.exports = function (config) {
   config.set({
-    basePath: "",
+    basePath: process.cwd(),
     frameworks: ["mocha", "sinon-chai", "phantomjs-shim"],
     files: [
-      "../../node_modules/@walmart/wmreact-react-demo-shared/phantomjs-shims.js",
-      "./entry.js"
+      // Sinon has issues with webpack. Do global include.
+      "./node_modules/electrode-bolt/node_modules/sinon/pkg/sinon.js",
+      "./node_modules/electrode-bolt/config/karma/entry.js"
     ],
     preprocessors: {
-      "./entry.js": ["webpack"]
+      "./node_modules/electrode-bolt/config/karma/entry.js": ["webpack"]
     },
-    webpack: {
-      cache: true,
-      module: {
-        preLoaders: [{
-          test: /src\/.*\.jsx?$/,
-          exclude: /(test|node_modules)\//,
-          loader: "isparta?{ babel: { stage: 1 } }"
-        }],
-        loaders: [{
-          test: /\.(js|jsx)$/,
-          exclude: [/node_modules/],
-          loader: "babel-loader?stage=1"
-        }, {
-          test: /\.css$/,
-          loader: "style-loader!css-loader"
-        }, {
-          test: /\.styl$/,
-          loader: "style-loader!css-loader!stylus-loader"
-        }]
-      },
-      resolve: {
-        root: [process.cwd()],
-        modulesDirectories: ["node_modules", "src"],
-        extensions: ["", ".js", ".jsx"],
-        alias: {
-          // Allow root import of `src/FOO` from ROOT/src.
-          src: path.join(process.cwd(), "src"),
-          test: path.join(process.cwd(), "test")
-        }
-      }
-    },
+    webpack: webpackCfg,
     webpackServer: {
-      quiet: true,
+      port: 3002, // Choose a non-conflicting port (3000 app, 3001 test dev)
+      quiet: false,
       noInfo: true,
       stats: {
         assets: false,
@@ -68,10 +42,11 @@ module.exports = function (config) {
       require("karma-mocha"),
       require("karma-mocha-reporter"),
       require("karma-phantomjs-launcher"),
+      require("karma-firefox-launcher"),
       require("karma-sinon-chai"),
       require("karma-webpack"),
-      require("@walmart/karma-phantomjs-shim"),
-      require("karma-spec-reporter")
+      require("karma-spec-reporter"),
+      require("karma-phantomjs-shim"),
     ],
     coverageReporter: {
       reporters: [

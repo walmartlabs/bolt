@@ -9,7 +9,7 @@ var prodCfg = require("./webpack.config");
 module.exports = {
   cache: true,
   context: path.join(process.cwd(), "test/client"),
-  entry: "./main",
+  entry: "../../node_modules/electrode-bolt/config/karma/entry",
   output: {
     path: process.cwd(),
     filename: "bundle.js",
@@ -21,6 +21,7 @@ module.exports = {
       src: path.join(process.cwd(), "src")
     }
   }),
+  resolveLoader: prodCfg.resolveLoader,
   module: prodCfg.module,
   devtool: "#source-map"
 };

@@ -12,13 +12,12 @@ module.exports = function (config) {
     frameworks: ["mocha", "phantomjs-shim"],
     reporters: ["spec"],
     browsers: ["PhantomJS"],
-    basePath: ".", // repository root.
+    basePath: process.cwd(), // repository root.
     files: [
       // Sinon has issues with webpack. Do global include.
-      "node_modules/sinon/pkg/sinon.js",
-
+      "./node_modules/electrode-bolt/node_modules/sinon/pkg/sinon.js",
       // Test bundle (must be created via `npm run dev|hot|server-test`)
-      "http://127.0.0.1:3001/assets/main.js"
+      "http://127.0.0.1:8080/assets/bundle.js"
     ],
     port: 9999,
     singleRun: true,
@@ -26,6 +25,12 @@ module.exports = function (config) {
       mocha: {
         ui: "bdd"
       }
-    }
+    },
+    plugins: [
+      require("karma-mocha"),
+      require("karma-spec-reporter"),
+      require("karma-phantomjs-shim"),
+      require("karma-phantomjs-launcher")
+    ]
   });
 };

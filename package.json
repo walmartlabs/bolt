@@ -14,7 +14,15 @@
     "build-dist": "bolt clean-dist && bolt build-dist-min && bolt build-dist-dev",
     "server-dev": "webpack-dev-server --config node_modules/electrode-bolt/config/webpack/webpack.config.demo.dev.js --colors",
     "server-hot": "webpack-dev-server --config node_modules/electrode-bolt/config/webpack/webpack.config.demo.hot.js --colors",
-    "test-frontend": "karma start node_modules/electrode-bolt/config/karma/karma.conf.js --colors"
+    "server-test": "webpack-dev-server --config node_modules/electrode-bolt/config/webpack/webpack.config.test.js --colors",
+    "test-frontend": "karma start node_modules/electrode-bolt/config/karma/karma.conf.js --colors",
+    "test-frontend-cov": "karma start node_modules/electrode-bolt/config/karma/karma.conf.coverage.js --colors",
+    "test-frontend-ci": "karma start --browsers PhantomJS,Firefox node_modules/electrode-bolt/config/karma/karma.conf.coverage.js --colors",
+    "test-frontend-dev": "karma start node_modules/electrode-bolt/config/karma/karma.conf.dev.js --colors",
+    "test": "bolt test-frontend",
+    "test-ci": "bolt test-frontend-ci",
+    "test-cov": "bolt test-frontend-cov",
+    "test-dev": "bolt test-frontend-dev"
   },
   "bin": {
     "bolt": "./bin/bolt.js"
