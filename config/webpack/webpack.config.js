@@ -1,6 +1,6 @@
 var webpack = require("webpack");
 var path = require("path");
-var boltNodeModules = path.join(__dirname, "../../node_modules");
+var boltNodeModules = path.join(__dirname, "../../", "node_modules");
 
 module.exports = {
   cache: true,
@@ -15,16 +15,16 @@ module.exports = {
     loaders: [{
       test: /\.jsx?$/,
       exclude: [/node_modules/],
-      loaders: ["babel-loader?stage=0"]
+      loader: "babel-loader?stage=0"
     }, {
       test: /\.css$/,
-      loaders: ["style-loader!css-loader"]
+      loader: "style-loader!css-loader"
     }, {
       test: /\.styl$/,
-      loaders: ["style-loader!css-loader!stylus-loader"]
+      loader: "style-loader!css-loader!stylus-loader"
     }, {
       test: /\.(png|jpg)$/,
-      loaders: ["url-loader?limit=8192"]
+      loader: "url-loader?limit=8192"
     }]
   },
   plugins: [
