@@ -1,2 +1,4 @@
 #!/usr/bin/env node
-require("../lib/bolt.js");
+"use strict";
+
+require("../lib/bolt.js").run();
