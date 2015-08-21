@@ -7,7 +7,7 @@
     "clean-dist": "rimraf dist",
     "build-dist-min": "webpack --config node_modules/@walmart/wm_bolt/config/webpack/webpack.config.js --colors",
     "build-dist-dev": "webpack --config node_modules/@walmart/wm_bolt/config/webpack/webpack.config.dev.js --colors",
-    "build-dist": "bolt clean-dist && bolt build-dist-min && bolt-dist-dev",
+    "build-dist": "bolt clean-dist && bolt build-dist-min && bolt build-dist-dev",
     "server-dev": "webpack-dev-server --config node_modules/@walmart/wm_bolt/config/webpack/webpack.config.demo.dev.js --colors",
     "server-hot": "webpack-dev-server --config node_modules/@walmart/wm_bolt/config/webpack/webpack.config.demo.hot.js --colors"
   },
