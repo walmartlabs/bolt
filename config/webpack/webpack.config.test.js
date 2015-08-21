@@ -6,14 +6,6 @@ var path = require("path");
 var _ = require("lodash");
 var prodCfg = require("./webpack.config");
 
-/***
-preLoaders: [{
-          test: /src\/.*\.jsx?$/,
-          exclude: /(test|node_modules)\//,
-          loader: "isparta?{ babel: { stage: 1 } }"
-        }],
-        ***/
-
 module.exports = {
   cache: true,
   context: path.join(process.cwd(), "test/client"),
