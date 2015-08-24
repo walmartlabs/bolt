@@ -29,8 +29,8 @@
     "test-cov": "bolt test-frontend-cov",
     "test-dev": "bolt test-frontend-dev",
     "check": "bolt lint && bolt test",
-    "check-ci": "bolt lint && bolt test-ci && cov-frontend",
-    "check-cov": "bolt lint && bolt test-cov && cov-frontend",
+    "check-ci": "bolt lint && bolt test-ci && bolt cov-frontend",
+    "check-cov": "bolt lint && bolt test-cov && bolt cov-frontend",
     "check-dev": "bolt lint && bolt test-dev"
   },
   "bin": {
