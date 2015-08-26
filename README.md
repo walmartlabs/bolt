@@ -21,6 +21,8 @@ $ npm install electrode-bolt
 1. in your `package.json`, replace existing scripts with `bolt <task>` where the task is the name of the task being replaced. For instance: `"cov-frontend": "istanbul check-coverage 'coverage/client/*/coverage.json'"` would be replaced with `"cov-frontend": "bolt cov-frontend"`.
 1. Enjoy seamless integration with pre-existing configs for your opininated `electrode` component!
 
+**Run `bolt` within your package to see the scripts that are available to you.**
+
 ## Usage
 
 Once you've followed the steps above, you should be able to not worry about using it. `bolt` does the work for you.
