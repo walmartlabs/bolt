@@ -3,9 +3,6 @@
   "version": "0.2.2",
   "description": "Opinionated meta config runner for react components",
   "scripts": {
-    "postinstall": "bolt build-lib",
-    "preversion": "bolt check",
-    "version": "bolt clean && bolt build && git add -A dist",
     "dev": "bolt server-dev & bolt server-test",
     "hot": "bolt server-hot & bolt server-test",
     "open-demo": "opener http://127.0.0.1:3000",
