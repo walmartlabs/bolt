@@ -6,7 +6,7 @@ module.exports = {
   cache: true,
   debug: false,
   devtool: "source-map",
-  entry: path.join(process.cwd(), "src/index.js"),
+  entry: path.join(process.cwd(), "index.js"),
   output: {
     path: path.join(process.cwd(), "dist"),
     filename: "bundle.js"
