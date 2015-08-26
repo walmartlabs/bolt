@@ -13,7 +13,7 @@
     "build-dist-dev": "webpack --config node_modules/electrode-bolt/config/webpack/webpack.config.dev.js --colors",
     "build-dist": "bolt clean-dist && bolt build-dist-min && bolt build-dist-dev",
     "clean-lib": "rimraf lib",
-    "build-lib": "bolt clean-lib && babel --stage 0 src -d lib",
+    "build-lib": "bolt clean-lib && babel --stage 2 src -d lib",
     "clean": "bolt clean-lib && bolt clean-dist",
     "build": "bolt build-lib && bolt build-dist",
     "server-dev": "webpack-dev-server --config node_modules/electrode-bolt/config/webpack/webpack.config.demo.dev.js --colors",
