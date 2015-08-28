@@ -35,7 +35,8 @@
     "check": "bolt lint && bolt test",
     "check-ci": "bolt lint && bolt test-ci",
     "check-cov": "bolt lint && bolt test-cov",
-    "check-dev": "bolt lint && bolt test-dev"
+    "check-dev": "bolt lint && bolt test-dev",
+    "bolt:lint": "eslint --ext .js -c ./config/eslint/.eslintrc-bolt bin config --color"
   },
   "bin": {
     "bolt": "./bin/bolt.js"

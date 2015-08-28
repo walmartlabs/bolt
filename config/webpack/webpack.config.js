@@ -1,3 +1,5 @@
+"use strict";
+
 var webpack = require("webpack");
 var path = require("path");
 var boltNodeModules = path.join(__dirname, "../../", "node_modules");
@@ -47,6 +49,6 @@ module.exports = {
     extensions: ["", ".js", ".jsx"]
   },
   resolveLoader: {
-      root: [boltNodeModules, process.cwd()]
+    root: [boltNodeModules, process.cwd()]
   }
 };
