@@ -35,7 +35,8 @@
     "check": "bolt lint && bolt test",
     "check-ci": "bolt lint && bolt test-ci",
     "check-cov": "bolt lint && bolt test-cov",
-    "check-dev": "bolt lint && bolt test-dev"
+    "check-dev": "bolt lint && bolt test-dev",
+    "bolt:test": "echo 'hello bolt!'"
   },
   "bin": {
     "bolt": "./bin/bolt.js"
@@ -66,6 +67,7 @@
     "file-loader": "^0.8.4",
     "isparta-loader": "^0.2.0",
     "istanbul": "^0.3.18",
+    "js-yaml": "^3.4.0",
     "karma": "^0.13.9",
     "karma-chrome-launcher": "^0.2.0",
     "karma-coverage": "^0.4.2",
