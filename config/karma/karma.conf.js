@@ -1,3 +1,5 @@
+"use strict";
+
 var path = require("path");
 
 var webpackCfg = require("../webpack/webpack.config.test");
@@ -46,7 +48,7 @@ module.exports = function (config) {
       require("karma-sinon-chai"),
       require("karma-webpack"),
       require("karma-spec-reporter"),
-      require("karma-phantomjs-shim"),
+      require("karma-phantomjs-shim")
     ],
     coverageReporter: {
       reporters: [

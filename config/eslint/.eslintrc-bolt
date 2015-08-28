@@ -1,0 +1,6 @@
+---
+extends:
+  - "eslint-config-defaults/configurations/walmart/es5-node"
+rules:
+  "no-console": 0
+  "no-process-exit": 0
