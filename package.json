@@ -1,6 +1,6 @@
 {
   "name": "electrode-bolt",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "Opinionated meta config runner for react components",
   "scripts": {
     "dev": "bolt server-dev & bolt server-test",
@@ -17,7 +17,7 @@
     "build-dist-dev": "webpack --config node_modules/electrode-bolt/config/webpack/webpack.config.dev.js --colors",
     "build-dist": "bolt clean-dist && bolt build-dist-min && bolt build-dist-dev",
     "clean-lib": "rimraf lib",
-    "build-lib": "bolt clean-lib && babel --stage 0 src -d lib",
+    "build-lib": "bolt clean-lib && babel --stage 1 src -d lib",
     "clean": "bolt clean-lib && bolt clean-dist",
     "build": "bolt build-lib && bolt build-dist",
     "server-dev": "webpack-dev-server --config node_modules/electrode-bolt/config/webpack/webpack.config.demo.dev.js --colors",
