@@ -1,4 +1,5 @@
 "use strict";
+
 /*
  * Karma Configuration: "dev" version.
  *
