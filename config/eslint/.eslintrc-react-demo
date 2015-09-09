@@ -3,3 +3,6 @@ extends:
   - "./.eslintrc-react"
 globals:
   document: false
+rules:
+  "complexity": 0
+  "max-len": 0
