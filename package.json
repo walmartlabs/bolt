@@ -1,6 +1,6 @@
 {
   "name": "electrode-bolt",
-  "version": "0.4.8",
+  "version": "0.4.9",
   "description": "Opinionated meta config runner for react components",
   "scripts": {
     "dev": "bolt server-dev & bolt server-test",
