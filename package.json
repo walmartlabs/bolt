@@ -37,6 +37,12 @@
     "check-cov": "bolt lint && bolt test-cov",
     "check-dev": "bolt lint && bolt test-dev",
     "init": "node ./node_modules/electrode-bolt/lib/init.js",
+    "bolt:test": "NODE_ENV=test mocha --require ./test/spec/entry.js --reporter spec --bail --check-leaks test --recursive --color",
+    "bolt:ci": "NODE_ENV=test istanbul cover _mocha --report lcovonly -- -R spec --require ./test/spec/entry.js test --recursive --color",
+    "bolt:check-ci": "bolt bolt:lint && bolt bolt:ci",
+    "bolt:cov": "NODE_ENV=test istanbul cover _mocha -- -R spec --require ./test/spec/entry.js test --recursive --color",
+    "bolt:check-cov": "bolt bolt:lint && bolt bolt:cov",
+    "bolt:tap": "istanbul cover _mocha -- -R tap --require ./test/spec/entry.js test --recursive --color",
     "bolt:lint": "eslint --ext .js -c ./config/eslint/.eslintrc-bolt bin config --color"
   },
   "bin": {
@@ -98,5 +104,8 @@
     "url-loader": "^0.5.6",
     "webpack": "^1.11.0",
     "webpack-dev-server": "^1.10.1"
+  },
+  "devDependencies": {
+    "proxyquire": "^1.7.2"
   }
 }
