@@ -36,7 +36,7 @@
     "check-ci": "bolt lint && bolt test-ci",
     "check-cov": "bolt lint && bolt test-cov",
     "check-dev": "bolt lint && bolt test-dev",
-    "scaffold": "node ./node_modules/electrode-bolt/lib/scaffold.js",
+    "init": "node ./node_modules/electrode-bolt/lib/init.js",
     "bolt:lint": "eslint --ext .js -c ./config/eslint/.eslintrc-bolt bin config --color"
   },
   "bin": {
