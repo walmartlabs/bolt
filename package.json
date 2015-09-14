@@ -28,7 +28,7 @@
     "test-frontend-cov": "karma start node_modules/electrode-bolt/config/karma/karma.conf.coverage.js --colors",
     "test-frontend-ci": "karma start --browsers PhantomJS,Firefox node_modules/electrode-bolt/config/karma/karma.conf.coverage.js --colors",
     "test-frontend-dev": "karma start node_modules/electrode-bolt/config/karma/karma.conf.dev.js --colors",
-    "test": "bolt test-frontend",
+    "test": "node ./bin/bolt bolt:check-ci",
     "test-ci": "bolt test-frontend-ci",
     "test-cov": "bolt test-frontend-cov",
     "test-dev": "bolt test-frontend-dev",
@@ -37,6 +37,12 @@
     "check-cov": "bolt lint && bolt test-cov",
     "check-dev": "bolt lint && bolt test-dev",
     "init": "node ./node_modules/electrode-bolt/lib/init.js",
+    "bolt:test": "NODE_ENV=test mocha --require ./test/spec/entry.js --reporter spec --bail --check-leaks test --recursive --color --config=node_modules/electrode-bolt/config/istanbul/.istanbul.yml",
+    "bolt:ci": "NODE_ENV=test istanbul cover _mocha --report lcovonly -- -R spec --require ./test/spec/entry.js test --recursive --color --config=node_modules/electrode-bolt/config/istanbul/.istanbul.yml",
+    "bolt:check-ci": "node ./bin/bolt bolt:lint && node ./bin/bolt bolt:ci",
+    "bolt:cov": "NODE_ENV=test istanbul cover _mocha -- -R spec --require ./test/spec/entry.js test --recursive --color --config=node_modules/electrode-bolt/config/istanbul/.istanbul.yml",
+    "bolt:check-cov": "node ./bin/bolt bolt:lint && node ./bin/bolt bolt:cov",
+    "bolt:tap": "istanbul cover _mocha -- -R tap --require ./test/spec/entry.js test --recursive --color --config=node_modules/electrode-bolt/config/istanbul/.istanbul.yml",
     "bolt:lint": "eslint --ext .js -c ./config/eslint/.eslintrc-bolt bin config --color"
   },
   "bin": {
@@ -98,5 +104,8 @@
     "url-loader": "^0.5.6",
     "webpack": "^1.11.0",
     "webpack-dev-server": "^1.10.1"
+  },
+  "devDependencies": {
+    "proxyquire": "^1.7.2"
   }
 }
