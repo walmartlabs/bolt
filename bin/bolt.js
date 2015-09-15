@@ -1,4 +1,6 @@
 #!/usr/bin/env node
 "use strict";
 
-require("../lib/bolt.js");
+var Bolt = require("../lib/bolt");
+var bolt = new Bolt(process);
+bolt.run();
