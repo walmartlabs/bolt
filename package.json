@@ -28,7 +28,7 @@
     "test-frontend-cov": "karma start node_modules/electrode-bolt/config/karma/karma.conf.coverage.js --colors",
     "test-frontend-ci": "karma start --browsers PhantomJS,Firefox node_modules/electrode-bolt/config/karma/karma.conf.coverage.js --colors",
     "test-frontend-dev": "karma start node_modules/electrode-bolt/config/karma/karma.conf.dev.js --colors",
-    "test": "node ./bin/bolt bolt:check-ci",
+    "test": "bolt test-frontend",
     "test-ci": "bolt test-frontend-ci",
     "test-cov": "bolt test-frontend-cov",
     "test-dev": "bolt test-frontend-dev",
