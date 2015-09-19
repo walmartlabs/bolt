@@ -21,11 +21,20 @@ $ npm install electrode-bolt --save
 1. in your `package.json`, replace existing scripts with `bolt <task>` where the task is the name of the task being replaced. For instance: `"cov-frontend": "istanbul check-coverage 'coverage/client/*/coverage.json'"` would be replaced with `"cov-frontend": "bolt cov-frontend"`.
 1. Enjoy seamless integration with pre-existing configs for your opininated `electrode` component!
 
-**Run `bolt` within your package to see the scripts that are available to you.**
-
 ## Usage
 
-Once you've followed the steps above, you should be able to not worry about using it. `bolt` does the work for you.
+Any tasks that you have added to your `package.json` to run `bolt <task>` can be run as `npm run`. To stay with the example above, running `npm run cov-frontend` will run the bolt task for you.
+
+### With `electrode-bolt-cli`
+
+[electrode-bolt-cli](https://github.com/walmartreact/electrode-bolt-cli) was created to easily give you access globally to `bolt` so you can run:
+
+```
+$ bolt <task>
+```
+
+**electrode-bolt-cli** gives you access to your tasks and `electrode-bolt` tasks in the command line, which will help to only have the scripts you need for production or CI in your `package.json`.
+
 
 ## Unique Configuration
 
@@ -52,7 +61,7 @@ Now when you run `bolt clean-dist`, rather than it running `rimraf dist`, it wil
 
 ## Why?
 
-Going through and modifying `*.config*` files in _every_ react component library you have (which correlates 1:1 to a git repository) is a huge pain in the butt, it's a lot of copy/pasta and no one should 1) have to do that and 2) have to endure the possible degradation over time of human copy/pasta.
+In building react components, the electrode team at WalmartLabs came up with a set of standard tooling and architecture that we feel help us develop better and faster. Unfortunately a lot of the tooling comes with its own configuration, so `electrode-bolt` is an opportunity to move all of that configuration that could be duplicated over all components and application into one place, making it easier to get up and running with a project faster.
 
 This package tries to solve the problem of creating a "meta-monolith" that stands behind our components so people can just build cool stuff and not worry about all the config that goes into keeping a component up to date.
 
@@ -66,7 +75,7 @@ Maybe one day it won't be opinionated. But this day? Not this day.
 |   |-- demo
 |   |   |-- index.html
 |   |   |-- demo.jsx
-|   |-- dist
+|   |-- lib
 |   |-- src
 |   |   |-- components
 |   |   |   |-- component.jsx
@@ -74,6 +83,6 @@ Maybe one day it won't be opinionated. But this day? Not this day.
 |   |-- docs
 |   |-- test
 |       |-- client
-|           |-- component
+|           |-- components
 |               |-- component.spec.jsx
 ```
