@@ -15,7 +15,7 @@ through `bolt`.
 within an electrode package, run:
 
 ```sh
-$ npm install electrode-bolt
+$ npm install electrode-bolt --save
 ```
 
 1. in your `package.json`, replace existing scripts with `bolt <task>` where the task is the name of the task being replaced. For instance: `"cov-frontend": "istanbul check-coverage 'coverage/client/*/coverage.json'"` would be replaced with `"cov-frontend": "bolt cov-frontend"`.
