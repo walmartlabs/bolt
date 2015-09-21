@@ -93,14 +93,16 @@ describe("Bolt", function () {
 
      it("should set `this.boltStandard` of first `bolt-standard-*` found in project dependencies", function () {
       stub = sandbox.stub(Bolt.prototype, "getBoltStandardPkg").returns({});
-      bolt.cwdPkg.dependencies = {
+      bolt.cwdPkg.devDependencies = {
         "bolt-standard-flux": "0.0.1",
+        "bolt-standard-foo": "0.0.1",
         "foo": "0.0.1"
       };
 
       bolt.run();
 
       expect(bolt.boltStandard).to.eql("bolt-standard-flux");
+      expect(bolt.boltStandard).to.not.eql("bolt-standard-foo");
       Bolt.prototype.getBoltStandardPkg.restore();
     });
 
