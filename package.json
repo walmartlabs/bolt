@@ -48,7 +48,6 @@
   "bin": {
     "bolt": "./bin/bolt.js"
   },
-  "main": "bin/bolt.js",
   "repository": {
     "type": "git",
     "url": "git@github.com:walmartreact/bolt.git"
