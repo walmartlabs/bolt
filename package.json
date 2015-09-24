@@ -1,6 +1,6 @@
 {
   "name": "electrode-bolt",
-  "version": "0.4.24",
+  "version": "0.4.25",
   "main": "bin/index.js",
   "description": "Opinionated meta config runner for react components",
   "scripts": {
