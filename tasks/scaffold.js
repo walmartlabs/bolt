@@ -55,7 +55,15 @@ var addComponentToIndex = function (args) {
   });
 };
 
+var fileExists = function (args) {
+  return fs.existsSync(path.join(process.cwd(), "src/components", args.name + ".jsx"));
+};
+
 module.exports = function (args) {
+  if (fileExists(args)) {
+    return console.log("Component already exists in src/. Please give the component a different name.");
+  }
+
   createComponent(args);
   createTest(args);
   addComponentToIndex(args);
