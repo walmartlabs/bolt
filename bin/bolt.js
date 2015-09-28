@@ -1,3 +1,6 @@
 #!/usr/bin/env node
+"use strict";
 
-require("../lib/bolt-run");
+var Bolt = require("../lib/bolt");
+var bolt = new Bolt(process);
+bolt.run();

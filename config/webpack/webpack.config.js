@@ -17,7 +17,6 @@ module.exports = {
     loaders: [{
       test: /\.jsx?$/,
       exclude: [/node_modules/],
-      /* loaders for use with demo.hot, needs an array */
       loaders: ["babel-loader?stage=1"]
     }, {
       test: /\.css$/,

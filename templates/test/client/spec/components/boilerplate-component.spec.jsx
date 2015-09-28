@@ -2,15 +2,27 @@
  * Client tests
  */
 import React from "react/addons";
-import Component from "src/components/boilerplate-component";
 
-// Use `TestUtils` to inject into DOM, simulate events, etc.
-// See: https://facebook.github.io/react/docs/test-utils.html
-const TestUtils = React.addons.TestUtils;
+describe("<%= _.capitalize(name) %>", () => {
+  let <%= _.capitalize(name) %>;
+  let component;
+  let container;
 
-describe("components/boilerplate-component", function () {
+  beforeEach(() => {
+    <%= _.capitalize(name) %> = require("src/components/<%= name %>");
+    container = document.createElement("div");
+  });
 
-  it("has expected content with deep render", function () {
+  afterEach(() => {
+    React.unmountComponentAtNode(container);
+  });
 
+  it("has expected content with deep render", () => {
+    component = React.render(
+      <<%= _.capitalize(name) %> />,
+      container
+    );
+
+    expect(component).to.not.be.false;
   });
 });

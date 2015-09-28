@@ -1,6 +1,6 @@
 import React from "react";
 
-export default class BoilerplateComponent extends React.Component {
+export default class <%= name %> extends React.Component {
   render() {
     return (
       <div>
