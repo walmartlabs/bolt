@@ -1,18 +1,26 @@
-# bolt
+# electrode-bolt
 
 > An opinionated meta config runner for react components, doing the heavy lifting so you don't have to.
 
-Provides CLI access to things such as:
+Bolt makes creating new react component libraries easy.
 
-- `webpack`
-- `eslint`
-- `karma`
+It provides tasks for different phases of a component library development cycle, such as:
 
-through `bolt`.
+- `dev` and `hot` - the ability to
+- `lint` - Run `eslint` on `demo`, `src`, `test`
+- `test` - Run tests in `test/client/`
+- `build` - Generate an npm package
 
 ## Install
 
-within an electrode package, run:
+To get the most out of `bolt`, install the command line tool:
+```
+$ npm install electrode-bolt-cli -g
+```
+
+This will allow you to directly run `bolt` from the command line, instead of having to put it behind `scripts` in your `package.json`.
+
+within a react component library, run:
 
 ```sh
 $ npm install electrode-bolt --save
@@ -21,15 +29,15 @@ $ npm install electrode-bolt --save
 1. in your `package.json`, replace existing scripts with `bolt <task>` where the task is the name of the task being replaced. For instance: `"cov-frontend": "istanbul check-coverage 'coverage/client/*/coverage.json'"` would be replaced with `"cov-frontend": "bolt cov-frontend"`.
 1. Enjoy seamless integration with pre-existing configs for your opininated `electrode` component!
 
-**Run `bolt` within your package to see the scripts that are available to you.**
+**If you're using `electrode-bolt-cli` (`npm install electrode-bolt-cli -g`), run `bolt` within your package to see the scripts that are available to you.**
 
 ## Usage
 
-Once you've followed the steps above, you should be able to not worry about using it. `bolt` does the work for you.
+Running `npm run <task>` will run the appropriate bolt task that's in your `package.json`.
 
 ## Unique Configuration
 
-So you don't want to the `bolt` command out of the box? No problem!
+So you don't want to use a `bolt` command out of the box? No problem!
 
 You can override a command in _your_ `package.json` and run `bolt <cmd>` and `bolt` will opt for your script over the script it provides.
 
