@@ -38,7 +38,7 @@
     "check-dev": "bolt lint && bolt test-dev",
     "init": "node ./node_modules/electrode-bolt/lib/init.js",
     "bolt:test": "NODE_ENV=test mocha --require ./test/spec/entry.js --reporter spec --bail --check-leaks test --recursive --color --config=node_modules/electrode-bolt/config/istanbul/.istanbul.yml",
-    "bolt:ci": "NODE_ENV=test istanbul cover _mocha --report lcovonly -- -R spec --require ./test/spec/entry.js test --recursive --color --config=node_modules/electrode-bolt/config/istanbul/.istanbul.yml",
+    "bolt:ci": "istanbul cover _mocha --report lcovonly -- -R spec --require ./test/spec/entry.js test --recursive --color --config=node_modules/electrode-bolt/config/istanbul/.istanbul.yml",
     "bolt:check-ci": "NODE_ENV=test npm run bolt:lint && npm run bolt:ci",
     "bolt:cov": "NODE_ENV=test istanbul cover _mocha -- -R spec --require ./test/spec/entry.js test --recursive --color --config=node_modules/electrode-bolt/config/istanbul/.istanbul.yml",
     "bolt:check-cov": "NODE_ENV=test npm run bolt:lint && npm run bolt:cov",
