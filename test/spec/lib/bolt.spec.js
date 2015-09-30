@@ -105,28 +105,6 @@ describe("Bolt", function () {
       expect(bolt.boltStandard).to.not.eql("bolt-standard-foo");
       Bolt.prototype.getBoltStandardPkg.restore();
     });
-
-    it("should add or overwrite existing scripts with the boltStandard scripts to the bolt tasks", function() {
-      var testScript = "echo 'will overwrite bolt script'";
-      var uniqueScript = "echo 'not going to overwrite bolt script";
-
-      stub = sandbox.stub(Bolt.prototype, "getBoltStandardPkg").returns({
-        scripts: {
-          "test": testScript,
-          "uniqueScript": uniqueScript
-        }
-      });
-
-      bolt.cwdPkg.devDependencies = {
-        "bolt-standard-flux": "0.0.1"
-      };
-
-      bolt.run();
-
-      expect(bolt.boltPkg.scripts["test"]).to.eql(testScript);
-      expect(bolt.boltPkg.scripts["uniqueScript"]).to.eql(uniqueScript);
-      Bolt.prototype.getBoltStandardPkg.restore();
-    });
   });
 
   describe("#preexecuteScript", function () {
