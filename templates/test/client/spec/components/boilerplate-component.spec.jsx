@@ -9,7 +9,7 @@ describe("<%= _.capitalize(name) %>", () => {
   let container;
 
   beforeEach(() => {
-    <%= _.capitalize(name) %> = require("src/components/<%= name %>");
+    <%= _.capitalize(name) %> = require("src/components/<%= _.kebabcase(name) %>");
     container = document.createElement("div");
   });
 

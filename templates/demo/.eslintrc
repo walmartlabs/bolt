@@ -1,6 +1,6 @@
 ---
 extends:
-  - "./.eslintrc-react"
+  - "defaults/configurations/walmart/es6-react"
 globals:
   document: false
 rules:

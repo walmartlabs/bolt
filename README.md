@@ -85,3 +85,7 @@ Maybe one day it won't be opinionated. But this day? Not this day.
 |           |-- component
 |               |-- component.spec.jsx
 ```
+
+## Contributing
+
+See [CONTRIBUTING.md](/CONTRIBUTING.md) for how to contribute.

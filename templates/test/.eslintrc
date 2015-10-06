@@ -1,7 +1,6 @@
 ---
 extends:
-  - "eslint-config-defaults/configurations/walmart/es6-test"
-  - "./.eslintrc-react"
+  - "defaults/configurations/walmart/es6-test"
 globals:
   document: false
   expect: false
