@@ -7,7 +7,7 @@ var webpackCfg = require("../webpack/webpack.config.test");
 module.exports = function (config) {
   config.set({
     basePath: process.cwd(),
-    frameworks: ["mocha", "sinon-chai", "phantomjs-shim"],
+    frameworks: ["mocha", "sinon-chai", "phantomjs-shim", "intl-shim"],
     files: [
       // Sinon has issues with webpack. Do global include.
       "./node_modules/electrode-bolt/node_modules/sinon/pkg/sinon.js",
@@ -48,7 +48,8 @@ module.exports = function (config) {
       require("karma-sinon-chai"),
       require("karma-webpack"),
       require("karma-spec-reporter"),
-      require("karma-phantomjs-shim")
+      require("karma-phantomjs-shim"),
+      require("karma-intl-shim")
     ],
     coverageReporter: {
       reporters: [
