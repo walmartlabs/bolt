@@ -28,7 +28,7 @@ module.exports = {
       test: /\.styl$/,
       loader: "style-loader!css-loader!stylus-loader"
     }, {
-      test: /\.(png|jpg|svg)$/,
+      test: /\.(png|jpg|svg|gif)$/,
       loader: "url-loader?limit=8192"
     }]
   },
