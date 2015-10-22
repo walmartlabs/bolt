@@ -32,5 +32,6 @@ bootstrap:
 publish:
 	git pull --rebase
 	make test
+	make build
 	node scripts/publish.js
 	make clean
