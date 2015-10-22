@@ -1,4 +1,4 @@
-var Bolt = require("./bolt");
+const Bolt = require("./bolt");
 
-var bolt = new Bolt(process);
+const bolt = new Bolt(process);
 bolt.run();

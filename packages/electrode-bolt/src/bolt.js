@@ -1,10 +1,12 @@
-var logger = require("./logger");
-var chalk = require("chalk");
-var path = require("path");
-var exec = require("child_process").exec;
-var _ = require("lodash");
+import logger from "./logger";
+import chalk from "chalk";
+import path from "path";
+import childProcess from "child_process";
+import _ from "lodash";
 
-var Bolt = module.exports = function (proc) {
+const exec = childProcess.exec;
+
+const Bolt = module.exports = function (proc) {
   this.proc = proc;
 
   this.gatherEnvironment();
@@ -41,17 +43,17 @@ Bolt.prototype.pathDelimiter = function () {
 };
 
 Bolt.prototype.setupPath = function () {
-  var pathDelimiter = this.pathDelimiter();
+  const pathDelimiter = this.pathDelimiter();
 
-  var cwdNodeModules = path.join(this.CWD, this.binPath);
-  var boltNodeModules = path.join(this.boltDir, "../" + this.binPath);
-  var modulePaths = [cwdNodeModules, boltNodeModules];
+  const cwdNodeModules = path.join(this.CWD, this.binPath);
+  const boltNodeModules = path.join(this.boltDir, "../" + this.binPath);
+  const modulePaths = [cwdNodeModules, boltNodeModules];
 
   if (this.boltStandard) {
     modulePaths.push(path.join(this.CWD, "node_modules", this.boltStandard, this.binPath));
   }
 
-  var newPath = (process.env.PATH || "")
+  const newPath = (process.env.PATH || "")
     .split(pathDelimiter)
     .filter(function (x) {
       return x;
@@ -63,28 +65,26 @@ Bolt.prototype.setupPath = function () {
 };
 
 Bolt.prototype.gatherScripts = function () {
-  var allScripts = _.merge({},
+  const allScripts = _.merge({},
     this.scripts.boltStandard, this.scripts.bolt, this.scripts.package);
 
   return allScripts;
 };
 
 Bolt.prototype.help = function () {
-  var allScripts = this.gatherScripts();
+  const allScripts = this.gatherScripts();
 
-  logger("\n" + "Usage:", chalk.green("bolt <command>"), "\n");
+  logger(`\n Usage: ${chalk.green("bolt <command>")}\n`);
   logger("available via `bolt`:\n");
-  for (var boltScriptName in allScripts) {
+  for (const boltScriptName in allScripts) {
     logger("  " + chalk.green(boltScriptName) + "\n    " + allScripts[boltScriptName]);
   }
 };
 
 Bolt.prototype.checkForBoltStandard = function () {
-  this.boltStandard;
+  const dependencies = _.merge({}, this.cwdPkg.dependencies, this.cwdPkg.devDependencies);
 
-  var dependencies = _.merge({}, this.cwdPkg.dependencies, this.cwdPkg.devDependencies);
-
-  for (var dep in dependencies) {
+  for (const dep in dependencies) {
     if (dep.match(/bolt-standard-.*/)) {
       this.boltStandard = dep;
       break;
@@ -97,16 +97,16 @@ Bolt.prototype.checkForBoltStandard = function () {
 };
 
 Bolt.prototype.getBoltStandardPkg = function () {
-  var boltStandardPath = path.join(this.CWD, "node_modules", this.boltStandard);
+  const boltStandardPath = path.join(this.CWD, "node_modules", this.boltStandard);
   return require(path.join(boltStandardPath, "package.json"));
 };
 
 Bolt.prototype.tryScripts = function () {
-  var tryScripts = ["package", "boltStandard", "bolt"];
-  for (var idx = 0; idx < tryScripts.length; idx++) {
-    if (!this.scripts[tryScripts[idx]]) continue;
+  const tryScripts = ["package", "boltStandard", "bolt"];
+  for (let idx = 0; idx < tryScripts.length; idx++) {
+    if (!this.scripts[tryScripts[idx]]) { continue; }
 
-    var script = this.scripts[tryScripts[idx]][this.cmd];
+    const script = this.scripts[tryScripts[idx]][this.cmd];
     if (script) {
       this.source = tryScripts[idx];
       return script;
@@ -115,7 +115,7 @@ Bolt.prototype.tryScripts = function () {
 };
 
 Bolt.prototype.preexecuteScript = function () {
-  var runnerName = "bolt";
+  const runnerName = "bolt";
 
   this.args = this.tryScripts();
   this.userArgs = this.proc.argv.length > 3 ? this.proc.argv.splice(3) : [];
@@ -126,9 +126,9 @@ Bolt.prototype.preexecuteScript = function () {
 
   /* istanbul ignore else */
   if (this.source === "package") {
-    var cwdParts = this.args.split(/\s+/);
-    var isBoltUtil = cwdParts.length === 2 && cwdParts[0] === runnerName;
-    var isBoltCmd = cwdParts[1] === this.cmd;
+    const cwdParts = this.args.split(/\s+/);
+    const isBoltUtil = cwdParts.length === 2 && cwdParts[0] === runnerName;
+    const isBoltCmd = cwdParts[1] === this.cmd;
     this.isProxy = isBoltUtil && isBoltCmd;
 
     if (!this.isProxy) {
@@ -145,11 +145,13 @@ Bolt.prototype.executeScript = function () {
     "from", this.source);
 
   /* istanbul ignore next */
-  var proc = exec(this.args + " " + this.userArgs.join(" "), {
+  const proc = exec(this.args + " " + this.userArgs.join(" "), {
     env: this.proc.env
-  }, function (err) {
+  }, (err) => {
+    /* eslint-disable no-process-exit */
     if (err) { process.exit(err.code); }
-  }.bind(this));
+    /* eslint-enable no-process-exit */
+  });
 
   proc.stdout.pipe(process.stdout, { end: false });
   proc.stderr.pipe(process.stderr, { end: false });
