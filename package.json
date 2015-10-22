@@ -9,6 +9,7 @@
     "eslint-plugin-react": "^3.6.2",
     "flow": "^0.2.3",
     "mocha": "^2.3.3",
+    "readline-sync": "^1.2.21",
     "shelljs": "^0.5.3"
   }
 }
