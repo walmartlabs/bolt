@@ -113,8 +113,6 @@ function publish() {
   exec("git commit -m " + NEW_TAG_NAME, true);
   exec("git tag " + NEW_TAG_NAME, true);
 
-  exec("make build-dist");
-
   changedPackages.forEach(function (name) {
     // prepublish script
     var prePub = getPackageLocation(name) + "/scripts/prepublish.js";
@@ -123,7 +121,7 @@ function publish() {
 
   changedPackages.forEach(function (name) {
     var loc = getPackageLocation(name);
-    exec("cd " + loc + " && npm publish", true);
+    //exec("cd " + loc + " && npm publish", true);
 
     // postpublish script
     var postPub = loc + "/scripts/postpublish.js";
@@ -143,5 +141,5 @@ try {
   return;
 }
 
-exec("git push", true);
-exec("git push --tags", true);
+//exec("git push", true);
+//exec("git push --tags", true);
