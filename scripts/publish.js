@@ -121,7 +121,7 @@ function publish() {
 
   changedPackages.forEach(function (name) {
     var loc = getPackageLocation(name);
-    //exec("cd " + loc + " && npm publish", true);
+    exec("cd " + loc + " && npm publish", true);
 
     // postpublish script
     var postPub = loc + "/scripts/postpublish.js";
@@ -141,5 +141,5 @@ try {
   return;
 }
 
-//exec("git push", true);
-//exec("git push --tags", true);
+exec("git push", true);
+exec("git push --tags", true);
