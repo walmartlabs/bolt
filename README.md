@@ -1,91 +1,69 @@
 # electrode-bolt
 
-> An opinionated meta config runner for react components, doing the heavy lifting so you don't have to.
+## Packages
 
-Bolt makes creating new react component libraries easy.
+The `electrode-bolt` repository is home of multiple packages that belong to the electrode-bolt suite of tools. This helps keep versioning consistent and makes working on the packages themselves much easier than having them each in separate repositories.
 
-It provides tasks for different phases of a component library development cycle, such as:
+### `electrode-bolt` suite
 
-- `dev` and `hot` - the ability to
-- `lint` - Run `eslint` on `demo`, `src`, `test`
-- `test` - Run tests in `test/client/`
-- `build` - Generate an npm package
+[packages/electrode-bolt]() is the meta-task runner's core, which includes `webpack`, `eslint`, `karma`, `mocha` and `chai`.
 
-## Install
+[packages/electrode-bolt-cli]() is the thin globally installed CLI runner that allows a developer to run `bolt` commands by providing access to the project's locally installed `electrode-bolt` instance.
 
-To get the most out of `bolt`, install the command line tool:
-```
-$ npm install electrode-bolt-cli -g
-```
+[packages/bolt-standard-flux]() is a `bolt-standard` configuration set for apps, which deviates slightly from a component library configuration set.
 
-This will allow you to directly run `bolt` from the command line, instead of having to put it behind `scripts` in your `package.json`.
-
-within a react component library, run:
-
-```sh
-$ npm install electrode-bolt --save
-```
-
-1. in your `package.json`, replace existing scripts with `bolt <task>` where the task is the name of the task being replaced. For instance: `"cov-frontend": "istanbul check-coverage 'coverage/client/*/coverage.json'"` would be replaced with `"cov-frontend": "bolt cov-frontend"`.
-1. Enjoy seamless integration with pre-existing configs for your opininated `electrode` component!
-
-**If you're using `electrode-bolt-cli` (`npm install electrode-bolt-cli -g`), run `bolt` within your package to see the scripts that are available to you.**
-
-## Usage
-
-Running `npm run <task>` will run the appropriate bolt task that's in your `package.json`.
-
-## Unique Configuration
-
-So you don't want to use a `bolt` command out of the box? No problem!
-
-You can override a command in _your_ `package.json` and run `bolt <cmd>` and `bolt` will opt for your script over the script it provides.
-
-For example, say you run:
-
-```
-$ bolt clean-dist
-```
-
-`bolt` will run `rimraf` on your `dist` directory. If you wanted it to do something else such as echo "I love electricity!", you can put the following script in your `scripts` object:
-
-```
-"scripts": {
-  "clean-dist": "echo 'I love electricity!'"
-  ...
-}
-```
-
-Now when you run `bolt clean-dist`, rather than it running `rimraf dist`, it will echo "I love electricity!".
-
-## Why?
-
-Going through and modifying `*.config*` files in _every_ react component library you have (which correlates 1:1 to a git repository) is a huge pain in the butt, it's a lot of copy/pasta and no one should 1) have to do that and 2) have to endure the possible degradation over time of human copy/pasta.
-
-This package tries to solve the problem of creating a "meta-monolith" that stands behind our components so people can just build cool stuff and not worry about all the config that goes into keeping a component up to date.
-
-Maybe one day it won't be opinionated. But this day? Not this day.
-
-## Opinionated Directory Structure
-
-```
-|-- my_project
-|   |-- package.json
-|   |-- demo
-|   |   |-- index.html
-|   |   |-- demo.jsx
-|   |-- dist
-|   |-- src
-|   |   |-- components
-|   |   |   |-- component.jsx
-|   |   |-- index.js
-|   |-- docs
-|   |-- test
-|       |-- client
-|           |-- component
-|               |-- component.spec.jsx
-```
+[packages/bolt-standard-component-lib]() is a work in progress and an attempt to abstract what's unique about component libraries out into their own `bolt-standard` configuration set, rather than having them live in the `electrode-bolt` package.
 
 ## Contributing
 
-See [CONTRIBUTING.md](/CONTRIBUTING.md) for how to contribute.
+## Development
+
+**The development environment requires `make`, so it's limited to \*nix systems**
+
+When starting development, clone down the repository:
+
+```
+$ git clone git@github.com:walmartreact/electrode-bolt.git && cd electrode-bolt
+```
+
+### bootstrapping
+
+Once you're in the `electrode-bolt` directory, you can run:
+
+```
+$ make bootstrap
+```
+
+`bootstrap` will:
+
+- run an `npm install` at the root level of the project
+- iteratively `npm install` for all `packages`
+- iteratively create links for all `packages` using `npm link`
+
+Now you're ready to start developing `electrode-bolt` packages.
+
+### watch
+
+Once you've bootstrapped the project and you want to start developing, the most sane way to do so is to run:
+
+```
+$ make watch
+```
+
+Running this command will watch all packages for changes and run them through `babel` so any projects that are using `electrode-bolt` will automatically be able to use the features you're developing within the `packages`.
+
+### publishing
+
+If you have rights to publish any of these `packages`, the correct way to `publish` is to run:
+
+```
+$ make publish
+```
+
+This will:
+
+- ask you for the type of version change you're looking to make
+- look for any changes to your project from the previous version and update the version
+- publish the packages to npm
+
+One of the great advantages to publishing this way is that all versions are consistent with the version they should be published for based on what `electrode-bolt` itself is at, so it makes it a lot easier to keep versioning more consistent and easier to infer for users.
