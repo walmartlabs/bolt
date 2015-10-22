@@ -1,0 +1,28 @@
+{
+  "name": "electrode-bolt-cli",
+  "version": "0.1.8",
+  "description": "A CLI for electrode-bolt",
+  "repository": "walmartreact/electrode-bolt",
+  "bin": {
+    "bolt": "bin/bolt"
+  },
+  "scripts": {
+    "dev": "babel src/bolt-cli.js --watch --out-file lib/bolt-cli.js",
+    "build": "if [ ! -e lib ]; then mkdir lib; fi && babel src --out-file lib/bolt-cli.js",
+    "prepublish": "npm run build",
+    "test": "node bin/bolt test"
+  },
+  "files": [
+    "lib"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^2.8.1",
+    "findup-sync": "^0.3.0",
+    "resolve": "^1.1.6"
+  },
+  "devDependencies": {
+    "babel": "^5.8.23"
+  }
+}
