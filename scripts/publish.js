@@ -141,5 +141,5 @@ try {
   return;
 }
 
-exec("git push", true);
-exec("git push --tags", true);
+exec("git push origin HEAD", true);
+exec("git push origin --tags", true);
