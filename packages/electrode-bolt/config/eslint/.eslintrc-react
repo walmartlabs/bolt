@@ -5,3 +5,4 @@ globals:
   window: false
 rules:
   "react/jsx-boolean-value": 0
+  "react/jsx-closing-bracket-location": 0
