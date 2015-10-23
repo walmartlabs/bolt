@@ -14,7 +14,7 @@ module.exports = _.merge({}, _.omit(base, "entry", "module"), {
   entry: {
     app: [
       "webpack-dev-server/client?http://0.0.0.0:" +
-        (process.env.WEBPACK_DEVSERVER_PORT || "3000"), // WebpackDevServer host and port
+        (process.env.WEBPACK_DEVSERVER_PORT || "4000"), // WebpackDevServer host and port
       "webpack/hot/only-dev-server",
       "./demo/demo.jsx"
     ]

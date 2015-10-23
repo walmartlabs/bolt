@@ -5,7 +5,7 @@
  *
  * Intended for:
  * - Karma tests: `npm run test-client`
- * - Browser tests: `http://localhost:3000/test/client/test.html`
+ * - Browser tests: `http://localhost:4000/test/client/test.html`
  */
 /*globals window:false*/
 var chai = require("chai");
