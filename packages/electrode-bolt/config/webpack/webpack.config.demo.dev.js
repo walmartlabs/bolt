@@ -10,7 +10,7 @@ var _ = require("lodash");
 module.exports = {
 
   devServer: {
-    port: process.env.WEBPACK_DEVSERVER_PORT,
+    port: (process.env.WEBPACK_DEVSERVER_PORT || "4000"),
     contentBase: path.join(process.cwd(), "demo"),
     noInfo: false
   },
