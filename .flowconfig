@@ -1,0 +1,10 @@
+[ignore]
+.*/npmconf/test/fixtures/package.json
+.*/react/.*
+.*/babel-core/.*
+
+[include]
+
+[libs]
+
+[options]
