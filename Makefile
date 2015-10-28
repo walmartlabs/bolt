@@ -27,7 +27,7 @@ test-travis: bootstrap lint build test
 
 bootstrap:
 	npm install
-	node scripts/bootstrap.js
+	node node_modules/.bin/babel-node scripts/bootstrap.js
 
 publish:
 	git pull --rebase
