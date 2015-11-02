@@ -2,4 +2,4 @@ image: node0.10
 
 script:
   - npm install
-  - npm test
+  - make test
