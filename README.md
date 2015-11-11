@@ -1,69 +1,37 @@
-# electrode-bolt
+# Builder Archetype: Electrode Bolt
 
-## Packages
+A React component archetype for [builder][].
 
-The `electrode-bolt` repository is home of multiple packages that belong to the electrode-bolt suite of tools. This helps keep versioning consistent and makes working on the packages themselves much easier than having them each in separate repositories.
+> An opinionated set of tasks do the heavy lifting so you don't have to.
 
-### `electrode-bolt` suite
+Make sure you know the [expected project structure](docs/project-structure.md) when setting up your new project!
 
-[packages/electrode-bolt]() is the meta-task runner's core, which includes `webpack`, `eslint`, `karma`, `mocha` and `chai`.
+## Install
 
-[packages/electrode-bolt-cli]() is the thin globally installed CLI runner that allows a developer to run `bolt` commands by providing access to the project's locally installed `electrode-bolt` instance.
+`electrode-bolt` is an `archetype` for `builder`, so anytime you install `electrode-bolt`, you also need to install `builder` as a dependency:
 
-[packages/bolt-standard-flux]() is a `bolt-standard` configuration set for apps, which deviates slightly from a component library configuration set.
+```sh
+$ npm install builder electrode-bolt --save
+```
 
-[packages/bolt-standard-component-lib]() is a work in progress and an attempt to abstract what's unique about component libraries out into their own `bolt-standard` configuration set, rather than having them live in the `electrode-bolt` package.
+## Usage Notes
+
+This archetype does not currently specify its own `.babelrc`. Your project
+should specify its own in the root directory if you want non-default Babel
+settings (like using stage 0, for instance). See [the recommended
+settings](config/babel/.babelrc).
+
+## Tasks
+
+For a full list of tasks, checkout the [docs/tasks](tasks.md) or run `builder help electrode-bolt`.
+
 
 ## Contributing
 
-## Development
+See [CONTRIBUTING.md](/CONTRIBUTING.md) for how to contribute.
 
-**The development environment requires `make`, so it's limited to \*nix systems**
+[builder]: https://github.com/FormidableLabs/builder
 
-When starting development, clone down the repository:
+## The Old `bolt`
 
-```
-$ git clone git@github.com:walmartreact/electrode-bolt.git && cd electrode-bolt
-```
-
-### bootstrapping
-
-Once you're in the `electrode-bolt` directory, you can run:
-
-```
-$ make bootstrap
-```
-
-`bootstrap` will:
-
-- run an `npm install` at the root level of the project
-- iteratively `npm install` for all `packages`
-- iteratively create links for all `packages` using `npm link`
-
-Now you're ready to start developing `electrode-bolt` packages.
-
-### watch
-
-Once you've bootstrapped the project and you want to start developing, the most sane way to do so is to run:
-
-```
-$ make watch
-```
-
-Running this command will watch all packages for changes and run them through `babel` so any projects that are using `electrode-bolt` will automatically be able to use the features you're developing within the `packages`.
-
-### publishing
-
-If you have rights to publish any of these `packages`, the correct way to `publish` is to run:
-
-```
-$ make publish
-```
-
-This will:
-
-- ask you for the type of version change you're looking to make
-- look for any changes to your project from the previous version and update the version
-- publish the packages to npm
-
-One of the great advantages to publishing this way is that all versions are consistent with the version they should be published for based on what `electrode-bolt` itself is at, so it makes it a lot easier to keep versioning more consistent and easier to infer for users.
+Previously, `electrode-bolt` had its own executable, but a huge amount of work went into `builder` and many of the learnings of the failings of `bolt` carried over, making `builder` an obvious choice to replace the `bolt` executable. If you're only interested in using the legacy `bolt`, it can be found [here](https://github.com/walmartreact/electrode-bolt/tree/v2.1.0).
