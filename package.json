@@ -1,6 +1,6 @@
 {
   "name": "electrode-bolt",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Opinionated meta config runner for react components",
   "scripts": {
     "npm:postinstall": "node -e \"require('fs').stat('lib', function(e,s){process.exit(e || !s.isDirectory() ? 1 : 0)})\" || builder run build-lib",
@@ -93,7 +93,7 @@
     "webpack-dev-server": "^1.10.0"
   },
   "gitHead": "95155dd088c9547a901708b6854b3efec6275629",
-  "_id": "electrode-bolt@1.0.8",
+  "_id": "electrode-bolt@1.0.9",
   "_shasum": "a33f1b7f12639d1c1783229dd5b13df0dc71396a",
   "_from": "electrode-bolt@*",
   "_npmVersion": "2.10.1",
@@ -104,7 +104,7 @@
   },
   "dist": {
     "shasum": "a33f1b7f12639d1c1783229dd5b13df0dc71396a",
-    "tarball": "https://npme.walmart.com/e/electrode-bolt/_attachments/electrode-bolt-1.0.8.tgz"
+    "tarball": "https://npme.walmart.com/e/electrode-bolt/_attachments/electrode-bolt-1.0.9.tgz"
   },
   "maintainers": [
     {
@@ -113,6 +113,6 @@
     }
   ],
   "directories": {},
-  "_resolved": "https://npme.walmart.com/e/electrode-bolt/_attachments/electrode-bolt-1.0.8.tgz",
+  "_resolved": "https://npme.walmart.com/e/electrode-bolt/_attachments/electrode-bolt-1.0.9.tgz",
   "readme": "ERROR: No README data found!"
 }
