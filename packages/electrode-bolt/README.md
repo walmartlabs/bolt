@@ -1,91 +1,165 @@
-# electrode-bolt
+# Builder Archetype: Electrode Bolt
 
-> An opinionated meta config runner for react components, doing the heavy lifting so you don't have to.
+A Walmart Labs flavored react component archetype for [builder]().
 
-Bolt makes creating new react component libraries easy.
+## Installation
 
-It provides tasks for different phases of a component library development cycle, such as:
-
-- `dev` and `hot` - the ability to
-- `lint` - Run `eslint` on `demo`, `src`, `test`
-- `test` - Run tests in `test/client/`
-- `build` - Generate an npm package
-
-## Install
-
-To get the most out of `bolt`, install the command line tool:
-```
-$ npm install electrode-bolt-cli -g
-```
-
-This will allow you to directly run `bolt` from the command line, instead of having to put it behind `scripts` in your `package.json`.
-
-within a react component library, run:
-
-```sh
-$ npm install electrode-bolt --save
-```
-
-1. in your `package.json`, replace existing scripts with `bolt <task>` where the task is the name of the task being replaced. For instance: `"cov-frontend": "istanbul check-coverage 'coverage/client/*/coverage.json'"` would be replaced with `"cov-frontend": "bolt cov-frontend"`.
-1. Enjoy seamless integration with pre-existing configs for your opininated `electrode` component!
-
-**If you're using `electrode-bolt-cli` (`npm install electrode-bolt-cli -g`), run `bolt` within your package to see the scripts that are available to you.**
-
-## Usage
-
-Running `npm run <task>` will run the appropriate bolt task that's in your `package.json`.
-
-## Unique Configuration
-
-So you don't want to use a `bolt` command out of the box? No problem!
-
-You can override a command in _your_ `package.json` and run `bolt <cmd>` and `bolt` will opt for your script over the script it provides.
-
-For example, say you run:
+If you don't have `builder` as a global dependency, install it with:
 
 ```
-$ bolt clean-dist
+$ npm install builder -g
 ```
 
-`bolt` will run `rimraf` on your `dist` directory. If you wanted it to do something else such as echo "I love electricity!", you can put the following script in your `scripts` object:
+Within your project, run:
 
 ```
-"scripts": {
-  "clean-dist": "echo 'I love electricity!'"
-  ...
-}
+$ npm install --save builder electrode-bolt
+$ npm install --save-dev electrode-bolt-dev
 ```
 
-Now when you run `bolt clean-dist`, rather than it running `rimraf dist`, it will echo "I love electricity!".
-
-## Why?
-
-Going through and modifying `*.config*` files in _every_ react component library you have (which correlates 1:1 to a git repository) is a huge pain in the butt, it's a lot of copy/pasta and no one should 1) have to do that and 2) have to endure the possible degradation over time of human copy/pasta.
-
-This package tries to solve the problem of creating a "meta-monolith" that stands behind our components so people can just build cool stuff and not worry about all the config that goes into keeping a component up to date.
-
-Maybe one day it won't be opinionated. But this day? Not this day.
-
-## Opinionated Directory Structure
+The last piece you'll need is a `.builderrc` that contains the following:
 
 ```
-|-- my_project
-|   |-- package.json
-|   |-- demo
-|   |   |-- index.html
-|   |   |-- demo.jsx
-|   |-- dist
-|   |-- src
-|   |   |-- components
-|   |   |   |-- component.jsx
-|   |   |-- index.js
-|   |-- docs
-|   |-- test
-|       |-- client
-|           |-- component
-|               |-- component.spec.jsx
+---
+archetypes:
+  - electrode-bolt
 ```
 
-## Contributing
 
-See [CONTRIBUTING.md](/CONTRIBUTING.md) for how to contribute.
+## Project Structure
+
+This archetype assumes an architecture as follows:
+
+```
+demo/
+  app.jsx
+  index.html
+src
+  components/
+    *.jsx
+  index.js
+test
+  client/
+    spec/
+      components/
+        *.jsx?
+      *.jsx?
+    main.js
+    test.html
+.builderrc
+package.json
+```
+
+## Usage Notes
+
+This archetype does not currently specify its own `.babelrc`. Your project
+should specify its own in the root directory if you want non-default Babel
+settings (like using stage 0, for instance). See [the recommended
+settings](config/babel/.babelrc).
+
+## Tasks
+
+```
+$ builder help electrode-bolt
+
+[builder:help]
+
+Usage:
+
+  builder [action] [task]
+
+Actions:
+
+  help, run, concurrent, install, init
+
+Tasks:
+
+  build
+    [electrode-bolt] builder run build-lib && builder run build-dist
+
+  build-dist
+    [electrode-bolt] builder run clean-dist && builder run build-dist-min && builder run build-dist-dev
+
+  build-dist-dev
+    [electrode-bolt] webpack --config node_modules/electrode-bolt/config/webpack/webpack.config.dev.js --colors
+
+  build-dist-min
+    [electrode-bolt] webpack --config node_modules/electrode-bolt/config/webpack/webpack.config.js --colors
+
+  build-lib
+    [electrode-bolt] builder run clean-lib && babel --stage 1 src -d lib
+
+  check
+    [electrode-bolt] builder run lint && builder run test
+
+  check-ci
+    [electrode-bolt] builder run lint && builder run test-ci
+
+  check-cov
+    [electrode-bolt] builder run lint && builder run test-cov
+
+  check-dev
+    [electrode-bolt] builder run lint && builder run test-dev
+
+  clean
+    [electrode-bolt] builder run clean-lib && builder run clean-dist
+
+  clean-dist
+    [electrode-bolt] rimraf dist
+
+  clean-lib
+    [electrode-bolt] rimraf lib
+
+  cov-frontend
+    [electrode-bolt] istanbul check-coverage 'coverage/client/*/coverage.json' --config=node_modules/electrode-bolt/config/istanbul/.istanbul.yml
+
+  dev
+    [electrode-bolt] builder run server-dev & builder run server-test
+
+  hot
+    [electrode-bolt] builder run server-hot & builder run server-test
+
+  lint
+    [electrode-bolt] builder run lint-react-demo && builder run lint-react-src && builder run lint-react-test
+
+  lint-react-demo
+    [electrode-bolt] eslint --ext .js,.jsx -c ./node_modules/electrode-bolt/config/eslint/.eslintrc-react-demo demo/*.jsx --color
+
+  lint-react-src
+    [electrode-bolt] eslint --ext .js,.jsx -c ./node_modules/electrode-bolt/config/eslint/.eslintrc-react src --color
+
+  lint-react-test
+    [electrode-bolt] eslint --ext .js,.jsx -c ./node_modules/electrode-bolt/config/eslint/.eslintrc-react-test test/client --color
+
+  server-dev
+    [electrode-bolt] webpack-dev-server --port 4000 --config node_modules/electrode-bolt/config/webpack/webpack.config.demo.dev.js --colors
+
+  server-hot
+    [electrode-bolt] webpack-dev-server --port 4000 --config node_modules/electrode-bolt/config/webpack/webpack.config.demo.hot.js --colors
+
+  server-test
+    [electrode-bolt] webpack-dev-server --port 3001 --config node_modules/electrode-bolt/config/webpack/webpack.config.test.js --colors
+
+  test-ci
+    [electrode-bolt] builder run test-frontend-ci
+
+  test-cov
+    [electrode-bolt] builder run test-frontend-cov
+
+  test-dev
+    [electrode-bolt] builder run test-frontend-dev
+
+  test-frontend
+    [electrode-bolt] karma start node_modules/electrode-bolt/config/karma/karma.conf.js --colors
+
+  test-frontend-ci
+    [electrode-bolt] karma start --browsers PhantomJS,Firefox node_modules/electrode-bolt/config/karma/karma.conf.coverage.js --colors
+
+  test-frontend-cov
+    [electrode-bolt] karma start node_modules/electrode-bolt/config/karma/karma.conf.coverage.js --colors
+
+  test-frontend-dev
+    [electrode-bolt] karma start node_modules/electrode-bolt/config/karma/karma.conf.dev.js --colors
+```
+
+[builder]: https://github.com/FormidableLabs/builder

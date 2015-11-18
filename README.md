@@ -4,17 +4,13 @@
 
 The `electrode-bolt` repository is home of multiple packages that belong to the electrode-bolt suite of tools. This helps keep versioning consistent and makes working on the packages themselves much easier than having them each in separate repositories.
 
-### `electrode-bolt` suite
+**In version 2.0.0, `electrode-bolt` favors `builder` and we've gotten rid of the `electrode-bolt-cli`. If you've been using `bolt` in the past, please see the upgrade guide!**
 
-[packages/electrode-bolt]() is the meta-task runner's core, which includes `webpack`, `eslint`, `karma`, `mocha` and `chai`.
+### `electrode-bolt` archetypes
 
-[packages/electrode-bolt-cli]() is the thin globally installed CLI runner that allows a developer to run `bolt` commands by providing access to the project's locally installed `electrode-bolt` instance.
+[packages/electrode-bolt]() is the `builder` archetype for the electrode platform at Walmart Labs dependencies.
 
-[packages/bolt-standard-flux]() is a `bolt-standard` configuration set for apps, which deviates slightly from a component library configuration set.
-
-[packages/bolt-standard-component-lib]() is a work in progress and an attempt to abstract what's unique about component libraries out into their own `bolt-standard` configuration set, rather than having them live in the `electrode-bolt` package.
-
-## Contributing
+[packages/electrode-bolt-dev]() is the electrode-bolt `builder` archetype's dev dependencies. The README explains how to use this package.
 
 ## Development
 
