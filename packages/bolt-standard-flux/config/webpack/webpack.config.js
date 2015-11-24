@@ -3,6 +3,7 @@ var path = require("path");
 var boltStandardNodeModules = path.join(__dirname, "../../", "node_modules");
 var boltNodeModules = path.join(__dirname, "../../../electrode-bolt", "node_modules");
 var CleanPlugin = require("clean-webpack-plugin");
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var StatsWriterPlugin = require("webpack-stats-plugin").StatsWriterPlugin;
 var autoprefixer = require("autoprefixer-stylus");
 
@@ -19,7 +20,8 @@ module.exports = {
       { test: /\.jsx?$/, include: path.join(process.cwd(), "client"),
         loaders: ["babel-loader?optional=runtime"] },
       { test: /\.styl$/,
-        loader: "style-loader!css-loader!stylus-loader" },
+        loader: ExtractTextPlugin.extract(
+          "style-loader", "css-loader!stylus-loader") },
       { test: /\.woff(2)?$/,
         loader: "url-loader?limit=10000&minetype=application/font-woff" },
       { test: /\.(ttf|eot|svg|png)$/,
@@ -40,6 +42,7 @@ module.exports = {
   plugins: [
     // Clean
     new CleanPlugin(["dist"]),
+    new ExtractTextPlugin("style.[hash].css"),
     // Optimize
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin(),
