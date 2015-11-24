@@ -5,6 +5,7 @@ var path = require("path");
 var webpack = require("webpack");
 var base = require("./webpack.config");
 var CleanPlugin = require("clean-webpack-plugin");
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var autoprefixer = require("autoprefixer-stylus");
 
 module.exports = {
@@ -22,6 +23,7 @@ module.exports = {
   resolveLoader:  base.resolveLoader,
   devtool: "eval-source-map",
   plugins: [
+    new ExtractTextPlugin("style.css"),
     new webpack.NoErrorsPlugin()
   ]
 };
