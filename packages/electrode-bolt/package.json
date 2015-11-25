@@ -29,7 +29,7 @@
     "test-ci": "bolt test-frontend-ci",
     "test-cov": "bolt test-frontend-cov",
     "test-dev": "bolt test-frontend-dev",
-    "check": "bolt lint && bolt test",
+    "check": "bolt lint && bolt check-cov && bolt cov-frontend",
     "check-ci": "bolt lint && bolt test-ci",
     "check-cov": "bolt lint && bolt test-cov",
     "check-dev": "bolt lint && bolt test-dev",
