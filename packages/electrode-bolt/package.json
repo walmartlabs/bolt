@@ -1,6 +1,5 @@
 {
   "name": "electrode-bolt",
-  "version": "1.0.9",
   "description": "Builder Archetype - Electrode Component",
   "scripts": {
     "dev": "builder concurrent server-dev server-test",
