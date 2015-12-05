@@ -4,7 +4,9 @@
 
 The `electrode-bolt` repository is home of multiple packages that belong to the electrode-bolt suite of tools. This helps keep versioning consistent and makes working on the packages themselves much easier than having them each in separate repositories.
 
-**In version 2.0.0, `electrode-bolt` favors `builder` and we've gotten rid of the `electrode-bolt-cli`. If you've been using `bolt` in the past, please see the upgrade guide!**
+**In version 2.0.0, `electrode-bolt` defers to `builder` as its task runner and we've gotten rid of the `electrode-bolt-cli`. If you've been using `bolt` in the past, please see the upgrade guide!**
+
+If you want to continue to use `electrode-bolt` as your task runner, you should fork from a tag in the `1.x.x` version.
 
 ### `electrode-bolt` archetypes
 
