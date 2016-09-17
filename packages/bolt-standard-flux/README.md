@@ -1,12 +1,12 @@
-# bolt-standard-flux
+# standard-flux
 
 An electrode standard configuration and task for building application.
 
-Meant to be used with `electrode-bolt` [WalmartReact/electrode-bolt](https://github.com/walmartreact/electrode-bolt)
+Meant to be used with `bolt` [WalmartReact/bolt](https://github.com/walmartreact/electrode-bolt)
 
 ## Usage
 
-Within your project directory where `electrode-bolt` is also a dependency:
+Within your project directory where `bolt` is also a dependency:
 
 ```
 $ npm install bolt-standard-flux

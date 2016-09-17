@@ -1,4 +1,4 @@
-# electrode-bolt
+# bolt
 
 > An opinionated meta config runner for react components, doing the heavy lifting so you don't have to.
 
@@ -15,7 +15,7 @@ It provides tasks for different phases of a component library development cycle,
 
 To get the most out of `bolt`, install the command line tool:
 ```
-$ npm install electrode-bolt-cli -g
+$ npm install bolt-cli -g
 ```
 
 This will allow you to directly run `bolt` from the command line, instead of having to put it behind `scripts` in your `package.json`.
@@ -23,13 +23,13 @@ This will allow you to directly run `bolt` from the command line, instead of hav
 within a react component library, run:
 
 ```sh
-$ npm install electrode-bolt --save
+$ npm install bolt --save
 ```
 
 1. in your `package.json`, replace existing scripts with `bolt <task>` where the task is the name of the task being replaced. For instance: `"cov-frontend": "istanbul check-coverage 'coverage/client/*/coverage.json'"` would be replaced with `"cov-frontend": "bolt cov-frontend"`.
-1. Enjoy seamless integration with pre-existing configs for your opininated `electrode` component!
+1. Enjoy seamless integration with pre-existing configs for your opininated `react` component!
 
-**If you're using `electrode-bolt-cli` (`npm install electrode-bolt-cli -g`), run `bolt` within your package to see the scripts that are available to you.**
+**If you're using `bolt-cli` (`npm install bolt-cli -g`), run `bolt` within your package to see the scripts that are available to you.**
 
 ## Usage
 

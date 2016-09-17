@@ -1,18 +1,18 @@
-# electrode-bolt-cli
+# bolt-cli
 
-> electrode `bolt` command line interface.
+> `bolt` command line interface.
 
-Install this globally to have access to the bolt command. _This is not bolt itself,_ that can be found at [walmartreact/electrode-bolt](https://github.com/walmartreact/electrode-bolt).
+Install this globally to have access to the bolt command. _This is not bolt itself,_ that can be found at [walmartreact/bolt](https://github.com/walmartreact/electrode-bolt).
 
 ```
-npm install -g electrode-bolt-cli
+npm install -g bolt-cli
 ```
 
 ## Usage
 
 ### Local Bolt dependency
 
-Within a package that has `electrode-bolt` installed as a dependency:
+Within a package that has `bolt` installed as a dependency:
 
 To list bolt tasks, you can simply run `bolt`.
 
@@ -20,7 +20,7 @@ To run a `bolt` task, run `bolt <task>`. If no task exists, bolt will let you kn
 
 ## Notes
 
-- This tool isn't required for using the `electrode-bolt` tool, but it allows you to run `bolt` tasks from the command line easily rather than having to have bolt itself installed globally or having all of your `npm run` tasks directly linked to every task `electrode-bolt` provides.
+- This tool isn't required for using the `bolt` tool, but it allows you to run `bolt` tasks from the command line easily rather than having to have bolt itself installed globally or having all of your `npm run` tasks directly linked to every task `bolt` provides.
 
 ## Contributing
 
