@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import path from "path";
+import path from "path"
 import fs from "fs-extra";
 import jsonfile from "jsonfile";
 jsonfile.spaces = 2;
