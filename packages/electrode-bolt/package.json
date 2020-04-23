@@ -68,7 +68,7 @@
     "eslint-plugin-filenames": "~0.1.2",
     "eslint-plugin-react": "~3.6.3",
     "file-loader": "^0.8.4",
-    "fs-extra": "^0.24.0",
+    "fs-extra": "^0.30.0",
     "isparta-loader": "^1.0.0",
     "istanbul": "^0.3.18",
     "json-loader": "^0.5.3",
